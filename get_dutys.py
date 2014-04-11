@@ -70,9 +70,6 @@ source = get_html(request)
 
 source=source.decode('iso-8859-7')
 
-for y in get_links(source):
-	pass	
-
 for x in get_links(source):
 	sc = get_html(base_url+x)
 	sc = " ".join(sc.split())
