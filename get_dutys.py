@@ -16,7 +16,7 @@ def get_html(url):
 	return source
 
 def get_links(html):
-	links=[]	
+	links=[]
 	pos = html.find("pharmacyshow.asp")
 	while pos > 0:
 		i = 0
@@ -56,16 +56,16 @@ def dutiesi(source):
 		ins = source[pos_tag_double+2:pos_tag_double+i]
 		duty.append(ins)
 		pos_sc = source.find(":",pos_tag+i)
-	
+
 	return duty
-			
-			
+
+
 
 base_url="http://www.fsa.gr/"
 date =time.strftime("%d/%m/%Y")
 area = "141"
 request = base_url+"duties.asp?dateduty="+date+"&areaid="+area
-
+print(request)
 source = get_html(request)
 
 source=source.decode('iso-8859-7')
@@ -75,7 +75,7 @@ for x in get_links(source):
 	sc = " ".join(sc.split())
 	for k in dutiesi(sc):
 		print k
-	
+
 
 
 txt = codecs.open("output.txt","w","utf-8")
